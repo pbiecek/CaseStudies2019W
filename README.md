@@ -1,6 +1,6 @@
-# Projekt Zespolowy 2018
+# Warsztaty Badawcze 2018
 
-![Waffle.io - Issues in progress](https://badge.waffle.io/pbiecek/ProjektZespolowy2018.png?label=in%20progress&title=In%20Progress)](http://waffle.io/pbiecek/ProjektZespolowy2018)
+![Waffle.io - Issues in progress](https://badge.waffle.io/pbiecek/WarsztatyBadawcze2018.png?label=in%20progress&title=In%20Progress)](http://waffle.io/pbiecek/WarsztatyBadawcze2018)
 
 * 10:15 na.omit [analiza obrazu]
 * 10:40 GHR
