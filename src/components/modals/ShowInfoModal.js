@@ -10,7 +10,13 @@ class ShowInfoModal extends Component {
     this.state = {data: null};
   }
 
+  onBackButtonEvent(e) {
+    e.preventDefault();
+    this.props.onClose();
+  }
+
   async componentDidMount() {
+    window.onpopstate = this.onBackButtonEvent
     const data = await loadShowData(this.props.show);
     this.setState({data});
   }
