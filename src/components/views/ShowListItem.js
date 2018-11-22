@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {Box, Button, Image, Text} from 'grommet';
+import {Box, Button, Grid, Image, Text} from 'grommet';
 import {Close} from 'grommet-icons';
 import loadShowData from '../../utils/loadShowData';
 
@@ -19,12 +19,12 @@ class ShowListItem extends Component {
 
   render() {
     return (
-      <Box height="130px"
-           direction='row'
-           alignContent='start'
-           justify="start"
+      <Grid
+            rows={['auto']}
+            columns={['100px', 'auto', '50px']}
+            style={{width: '100%'}}
       >
-        <Box>
+        <Box height="130px">
           <Image src={(this.state.data && this.state.data.poster) || posterPlaceholder} fit='contain'/>
         </Box>
         {this.state.data ? (
@@ -39,9 +39,12 @@ class ShowListItem extends Component {
             <Text size='large'>{this.props.name}</Text>
           </Box>)}
         <Box direction='column' justify='center' margin={{left: 'small'}}>
-          <Button icon={<Close/>} onClick={() => this.props.onRemove(this.props.name)}/>
+          <Button icon={<Close/>} onClick={(e) => {
+            e.stopPropagation();
+            this.props.onRemove(this.props.name);
+          }}/>
         </Box>
-      </Box>
+      </Grid>
     );
   }
 }

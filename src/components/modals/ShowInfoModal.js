@@ -45,7 +45,7 @@ class ShowInfoModal extends Component {
                     start: [0, 1],
                     end: [0, 1]
                   }]}>
-            <Box className='modal-image' gridArea='header'>
+            <Box className='modal-image' gridArea='header' elevation='medium'>
               <Image src={this.state.data.poster} fit='cover'/>
               <Text className='text-overlay' size='xxlarge' color='light-1'>{this.state.data.name}</Text>
             </Box>

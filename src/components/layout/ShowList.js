@@ -24,8 +24,8 @@ class ShowList extends Component {
         <FlipMove>
           {
             this.props.showList.map(show => (
-              <Button plain hoverIndicator onClick={() => this.showModal(show)}>
-                <ShowListItem key={show} onRemove={this.props.onRemove} name={show}/>
+              <Button fill plain key={show} hoverIndicator onClick={() => this.showModal(show)}>
+                <ShowListItem onRemove={this.props.onRemove} name={show}/>
               </Button>
             ))
           }

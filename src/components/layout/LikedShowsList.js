@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Box, Button, Keyboard} from 'grommet';
+import {Box, Button, Keyboard, Text} from 'grommet';
 import {Add} from 'grommet-icons';
 import ShowSelection from '../views/ShowSelection';
 import ShowList from './ShowList';
@@ -30,9 +30,11 @@ class LikedShowsList extends Component {
   render() {
     return (
       <Box direction="column" gap='medium'>
+        <Text size='xlarge' textAlign='center'>Select shows you like</Text>
         <Keyboard
           onEnter={() => this.onAddShow()}>
-          <Box direction="row" gap='medium'>
+          <Box direction="row" gap='medium' style={{minHeight: '50px'}}
+          >
             <ShowSelection showList={this.props.showList}
                            onShowUnselected={() => this.setState({selectedShow: undefined})}
                            onShowSelected={(selectedShow) => this.setState({selectedShow})}/>
