@@ -1,9 +1,6 @@
 import io
-from vocab import Vocab
-from vocab import build_vocab
-from numpy import array
-import pandas as pd
-from sklearn.model_selection import train_test_split
+import os
+from typing import List, Dict
 
 
 def load_file(fname):
@@ -18,6 +15,15 @@ def load_file_to_string(fname: str) -> str:
     with open(fname, 'r') as myfile:
         data = myfile.read().replace('\n', '')
     return data
+
+
+def load_files_to_string(path: str) -> str:
+    all_data = ""
+    for fname in os.listdir(path):
+        with open(path + "/" + fname, 'r') as myfile:
+            data = myfile.read().replace('\n', '')
+            all_data += data
+    return all_data
 
 
 def load_data_to_one_str(fname, vocab, max_len):
@@ -67,3 +73,21 @@ def load_data(fname, vocab, max_len):
                 doc[i] = 0
 
     return encoded_docs
+
+
+def vector(line):
+    """ Line is in the format output by print-sentence-vector """
+    v = line.split()[-300:]
+    return list(map(float, v))
+
+
+def load_vectors(fname: str, list: List[str]) -> Dict:
+    fin = io.open(fname, 'r', encoding='utf-8', newline='\n', errors='ignore')
+    n, d = map(int, fin.readline().split())
+    data = {}
+    for line in fin:
+        tokens = line.rstrip().split(' ')
+        if tokens[0] in list:
+            data[tokens[0]] = vector(line)
+    return data
+
