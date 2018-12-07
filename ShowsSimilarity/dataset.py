@@ -1,6 +1,6 @@
 import io
 import os
-from typing import List, Dict
+from typing import List, Dict, Tuple
 
 
 def load_file(fname):
@@ -17,13 +17,30 @@ def load_file_to_string(fname: str) -> str:
     return data
 
 
-def load_files_to_string(path: str) -> str:
+def load_files_to_string(path: str, name_list: List[str] = None, how_many: int = 3) -> str:
     all_data = ""
+    i = 0
     for fname in os.listdir(path):
-        with open(path + "/" + fname, 'r') as myfile:
+        if i >= how_many:
+            break
+        i += 1
+        if name_list is not None and fname in name_list:
+            continue
+        with open(path + "/" + fname, encoding="utf8", errors='ignore') as myfile:
             data = myfile.read().replace('\n', '')
             all_data += data
     return all_data
+
+
+def load_paths_from_dir(path: str, name_list: List[str] = None) -> Tuple[List[str], List[str]]:
+    paths = []
+    names = []
+    for fname in os.listdir(path):
+        if name_list is not None and fname not in name_list:
+            continue
+        paths.append(path + "/" + fname)
+        names.append(fname)
+    return names, paths
 
 
 def load_data_to_one_str(fname, vocab, max_len):
