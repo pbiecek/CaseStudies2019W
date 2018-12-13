@@ -113,3 +113,8 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+## PROJECT SPECIFIC
+/data/open-subtitles/*
+!/data/open-subtitles/.gitkeep
+/data/title.basics.tsv.gz
