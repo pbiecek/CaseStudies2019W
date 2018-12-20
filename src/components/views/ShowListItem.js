@@ -25,7 +25,7 @@ class ShowListItem extends Component {
             style={{width: '100%'}}
       >
         <Box height="130px">
-          <Image src={(this.state.data && this.state.data.poster) || posterPlaceholder} fit='contain'/>
+          <Image src={(this.state.data && this.state.data.poster !== 'N/A' && this.state.data.poster) || posterPlaceholder} fit='contain'/>
         </Box>
         {this.state.data ? (
           <Box direction='column' justify='center'>

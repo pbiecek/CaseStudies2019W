@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {Box, Button, Grommet, Heading, Image, Layer, ResponsiveContext} from 'grommet';
 import LikedShowsList from './components/layout/LikedShowsList';
 import {FormClose} from 'grommet-icons';
+import parseCsv from './utils/parseCsv';
+import Recommendations from './components/layout/Recommendations';
 
 const theme = {
   global: {
@@ -30,22 +32,32 @@ const AppBar = (props) => (
   />
 );
 
+const unique = (arr) => [...new Set(arr)];
+
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       showSidebar: false,
       loading: true,
-      shows: []
+      shows: [],
+      showList: [],
+      recommendations: {}
     };
   }
 
   async componentDidMount() {
-    // const shows = await loadFile('shows.txt');
     const shows = await (await fetch('shows.txt')).text();
+    const recommendations = (await parseCsv((await (await fetch('show_sim_emb.csv')).text())))
+      .reduce((acc, {show1, show2}) => ({...acc,
+        [show1]: (acc[show1] ? unique([...acc[show1], show2]) : [show2]),
+        [show2]: (acc[show2] ? unique([...acc[show2], show1]) : [show1])
+      }), {});
+
     this.setState({
       loading: false,
-      shows: shows.split('\n')
+      shows: shows.split('\n'),
+      recommendations
     });
   }
 
@@ -61,19 +73,17 @@ class App extends Component {
               </AppBar>
               <Box direction='row' flex fill='vertical'>
                 <Box flex margin='medium'>
-                  <LikedShowsList showList={this.state.shows}/>
+                  <LikedShowsList showList={this.state.shows} onChange={showList => this.setState({showList})}/>
                 </Box>
                 {(size !== 'small') ? (
                   <Box
                     flex
                     fill='vertical'
                     width='medium'
-                    background='light-2'
                     elevation='small'
-                    align='center'
-                    justify='center'
+                    margin='medium'
                   >
-                    TODO display similar shows
+                    <Recommendations recommendations={this.state.recommendations} selectedShows={this.state.showList}/>
                   </Box>
                 ) : (this.state.showSidebar &&
                   <Layer>

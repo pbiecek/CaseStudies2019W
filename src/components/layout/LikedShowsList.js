@@ -15,16 +15,20 @@ class LikedShowsList extends Component {
 
   onAddShow() {
     if (this.state.selectedShow && !this.state.showList.includes(this.state.selectedShow)) {
+      const newList = [...this.state.showList, this.state.selectedShow];
       this.setState({
-        showList: [...this.state.showList, this.state.selectedShow]
+        showList: newList
       });
+      this.props.onChange(newList);
     }
   }
 
   onRemoveShow(showName) {
+    const newList = this.state.showList.filter(item => item !== showName);
     this.setState({
-      showList: this.state.showList.filter(item => item !== showName)
+      showList: newList
     });
+    this.props.onChange(newList);
   }
 
   render() {

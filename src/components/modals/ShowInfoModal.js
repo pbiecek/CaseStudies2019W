@@ -5,6 +5,8 @@ import loadShowData from '../../utils/loadShowData';
 import {Edit, Group, InProgress, Map, Multimedia, Star, Trophy} from 'grommet-icons';
 import Swipeable from 'react-swipeable';
 
+const posterPlaceholder = 'http://www.theprintworks.com/wp-content/themes/psBella/assets/img/film-poster-placeholder.png';
+
 class ShowInfoModal extends Component {
   constructor(props) {
     super(props);
@@ -48,7 +50,7 @@ class ShowInfoModal extends Component {
                       end: [0, 1]
                     }]}>
               <Box className='modal-image' gridArea='header' elevation='medium'>
-                <Image src={this.state.data.poster} fit='cover'/>
+                <Image src={(this.state.data && this.state.data.poster !== 'N/A' && this.state.data.poster) || posterPlaceholder} fit='cover'/>
                 <Text className='text-overlay' size='xxlarge' color='light-1'>{this.state.data.name}</Text>
               </Box>
               <Box gridArea='content'>
