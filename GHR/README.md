@@ -1,43 +1,61 @@
-# Team GHR: TV show similarity
+# TV Show Recommendations based on Textual Similarity of Subtitles
+*Authors*: Ivan Rukhavets, Kamil Grabowski, Piotr Halama
 
-## Description
+**TODO**: Abstract
 
-TVshow-sim (name is subject to change) is an application shows the most similar
-TV series based on user input. The comparison between the input and TV series is based
-on text similarity of transcripts.
+## Introduction
 
-The user input can be one of following:
-  - another TV series in app's database (chosen from list)
-  - a transcript, either from show not included in database or
-    of their own creation
+  ### Wstęp
+  Celem projektu jest określenie podobieństwa seriali na podstawie napisów z ich kilku pierwszych odcinków oraz przygotowanie aplikacji, która dla serialu wybranego z przygotowanej przez nas listy wskaże kilka najbardziej podobnych seriali.
 
-## Interface
+**TODO**: use cases
 
-App's functionality will be exposed in two ways:
-  - a simple web interface
-  - Python library
+## Solution
 
-## Software requirements
-There is only one hard requirement: ability to run Docker containers.
+### Data preparation
+  ### Przygotowanie danych
+  Jako zbiór danych wybraliśmy wszystkie seriale z portalu IMDB\footnote{https://www.imdb.com/} stworzone po roku 1970 i mające co najmniej 10000 ocen. Dostaliśmy 990 tytułów. Następnie próbowaliśmy pobrać pierwsze odcinki każdego sezonu seriali ze strony opensubtitles.org. Udało nam się pozyskać co najmniej jeden odcinek dla 872 seriali i ponad 4000 odcinków w sumie. Dalszym krokiem było przygotowanie rozpakowanych plików \textit{srt}. Wiązało się to z pewnymi trudnościami, gdyż API opensubtitles nie jest do końca spójne i niektóre odcinki nie były zarchiwowane, niktóre były w formacie \textit{zip}, a niektóre – w \textit{tar.gz}. Następnie należało się pozbyć metadanych napisów, t.j. kody czasowe. Format \textit{srt} ma prostą specyfikację\footnote{Specyfikacja SRT: https://matroska.org/technical/specs/subtitles/srt.html}, więc nie wywołało to większych problemów. W wyniku dostaliśmy pliki tekstowe zawierające tylko tekst napisów odcinków seriali.
+  
+**TODO**: Dalej - stopwods, lemmatization, steming etc.
 
-Apart from that, a web browser is required for accessing web interface.
+### Comparison method
 
-## Similarity mechanism
-### Method
-Our method of choice is to use FastText embeddings and calculate dot product of
-embeddings for pair of shows. For now, we will calculate document embeddings by
-taking average of all word embeddings.
+  ### Metoda porównywania seriali
+  Najpierw łączymy kilka pierwszych odcinków serialu w jeden napis, a następnie wybieramy z niego sto najczęściej występujących rzeczowników. Przy pomocy fastTextu znajdujemy dla każdego z tych rzeczowników word embedding. Wyznaczamy word embedding serialu jako średnią z wcześniej otrzymanych embeddingów. Ostatecznie dla każdego serialu znajdujemy te, które są do niego podobne przy użyciu podobieństwa kosinusowego:
 
-### Input & output
-The input of the mechanism is any text written in English. There is no minimum requirement
-on the length, but the more text is provided the more accurate results are returned (albeit up
-to certain point, after that we could possibly encounter vanishing returns).
+![](./imgs/eq1.png)
 
-The output is numeric score for 0 to 1 interval, 1 meaning the most similar (identical) and 0 the least.
+[comment]: # (\[\frac{\sum_{i=1}^{n}A_i*B_i}{\sqrt{\sum_{i=1}^{n}A_i^2}*\sqrt{\sum_{i=1}^{n}B_i^2}}\])
 
-### Training requirements
-There are currently none, as we are using pretrained word embeddings.
+### Implementation details
+**MAYBE**
 
-### Evaluation
-Adequacy of our method of choice will be checked on evaluation set of
-at least 200 pairs of shows, annotated either as similar or dissimalar.
+## Results
+The quality of our solution has been tested by comparing it to TasteDive, website which helps to find similar music, movies, tv shows, books, authors and games.
+We conducted surveys, which can by found at the following address: [](https://goo.gl/forms/tHUYKyld723O0ptw1).
+Each participant had a task to assign to each of the 24 tv shows one of the 4 answers: show chosen by our algorithm, show chosen by TasteDive, "Both are equally similar" and "I can not tell".
+
+Shows chosen by our algorithm have been selected 16 times, shows chosen by TasteDive have been selected 56 times, answer "Both are equally similar" has been chosen only 2 times and answer "I can not tell" has been chosen 71 times.
+We consider that one of pairs of series assigned to a given tv show won if it had more votes.
+Shows chosen by our algorithm won 6 times and shows chosen by TasteDive won 14 times.
+
+Assignment of similar series to "Death Note" and "Cowboy Bebop" gave interesting results.
+"Death Note" is anime and crime show, our algorithm found the series the most similar to it to be "Sherlock", which is also crime show, but not animation.
+TasteDive chose "Code Geass" which is anime like "Death Note", but subject matter of series is completely different.
+Similar situation is with "Cowboy Bebop", it is anime, the action takes places in the future (space ships and interplanetary travels are important elements of plot).
+Our algorithm chose "Futurama" to be the most similar to it.
+It is cartoon, which takes places in future and spaceships and interplanetary travels are also important elements of plot.
+TasteDive chose "Samurai Champloo", which is anime, but it takes place in completely different time than "Cowboy Bebop".
+
+In both cases most people chose shows proposed by TasteDive.
+It shows that our algorithm sometimes makes decisions, which are not obvious to people, because it is based only on words and there are other things, that are important to people watching tv shows.
+Such as style of animation or fact, that show is live action.
+
+## Related work 
+**TODO**
+
+## Conclusion
+**TODO**: lesson learned
+
+
+
