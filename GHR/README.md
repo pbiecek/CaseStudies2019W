@@ -35,7 +35,10 @@ The quality of our solution has been tested by comparing it to TasteDive, websit
 We conducted surveys, which can by found at the following address: [](https://goo.gl/forms/tHUYKyld723O0ptw1).
 Each participant had a task to assign to each of the 24 tv shows one of the 4 answers: show chosen by our algorithm, show chosen by TasteDive, "Both are equally similar" and "I can not tell".
 
+![](./imgs/survey_results.png)
+<!---
 Shows chosen by our algorithm have been selected 16 times, shows chosen by TasteDive have been selected 56 times, answer "Both are equally similar" has been chosen only 2 times and answer "I can not tell" has been chosen 71 times.
+-->
 We consider that one of pairs of series assigned to a given tv show won if it had more votes.
 Shows chosen by our algorithm won 6 times and shows chosen by TasteDive won 14 times.
 
