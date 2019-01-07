@@ -53,10 +53,10 @@ Similar situation is with "Cowboy Bebop", it is anime, the action takes places i
 Our algorithm chose "Futurama" to be the most similar to it.
 It is cartoon, which takes places in future and spaceships and interplanetary travels are also important elements of plot. TasteDive chose "Samurai Champloo", which is anime, but it takes place in completely different time than "Cowboy Bebop".
 
-
-
+<!---
 ## Related work 
 **TODO**
+-->
 
 ## Conclusion
 In both cases described above most people chose shows proposed by TasteDive.
