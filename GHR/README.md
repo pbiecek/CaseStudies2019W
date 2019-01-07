@@ -41,11 +41,11 @@ Shows chosen by our algorithm won 6 times and shows chosen by TasteDive won 14 t
 
 Assignment of similar series to "Death Note" and "Cowboy Bebop" gave interesting results.
 
-# Death Note
+### Death Note
 "Death Note" is anime and crime show, our algorithm found the series the most similar to it to be "Sherlock", which is also crime show, but not animation.
 TasteDive chose "Code Geass" which is anime like "Death Note", but subject matter of series is completely different.
 
-# Cowboy Bebop
+### Cowboy Bebop
 Similar situation is with "Cowboy Bebop", it is anime, the action takes places in the future (space ships and interplanetary travels are important elements of plot).
 Our algorithm chose "Futurama" to be the most similar to it.
 It is cartoon, which takes places in future and spaceships and interplanetary travels are also important elements of plot. TasteDive chose "Samurai Champloo", which is anime, but it takes place in completely different time than "Cowboy Bebop".
