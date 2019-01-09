@@ -10,13 +10,25 @@
 
 **TODO**: use cases
 
+## Usage
+
+### Frontend
+
+To start a server, do:
+
+```{bash}
+yarn # to install dependencies
+yarn start # to start server
+```
+
+Then you can see the app running at `localhost:3000`
+
 ## Solution
 
 ### Data preparation
-  ### Przygotowanie danych
-  Jako zbiór danych wybraliśmy wszystkie seriale z portalu IMDB\footnote{https://www.imdb.com/} stworzone po roku 1970 i mające co najmniej 10000 ocen. Dostaliśmy 990 tytułów. Następnie próbowaliśmy pobrać pierwsze odcinki każdego sezonu seriali ze strony opensubtitles.org. Udało nam się pozyskać co najmniej jeden odcinek dla 872 seriali i ponad 4000 odcinków w sumie. Dalszym krokiem było przygotowanie rozpakowanych plików \textit{srt}. Wiązało się to z pewnymi trudnościami, gdyż API opensubtitles nie jest do końca spójne i niektóre odcinki nie były zarchiwowane, niktóre były w formacie \textit{zip}, a niektóre – w \textit{tar.gz}. Następnie należało się pozbyć metadanych napisów, t.j. kody czasowe. Format \textit{srt} ma prostą specyfikację\footnote{Specyfikacja SRT: https://matroska.org/technical/specs/subtitles/srt.html}, więc nie wywołało to większych problemów. W wyniku dostaliśmy pliki tekstowe zawierające tylko tekst napisów odcinków seriali.
+
+As a training data set we have used items from the [IMDb datasets](https://datasets.imdbws.com/) tagged as `tvSeries` or `tvMiniSeries`  created after 1970 with at least 10000 user rates. This has given us 990 shows. Next we have tried to download and unpack first episodes' subtitles of each season of each show from [opensubtitles.org](opensubtitles.org). As a result we have gathered more than 4000 episodes for 872 shows. The next step is removing metadata (i.e. indexes or timestamps) from the `.srt` file. The resulting corpus of TV series subtitles can be found [here](https://drive.google.com/open?id=1EydDpkS8LuP_vjp7g1A6hEa08ezL7Jf7).
   
-**TODO**: Dalej - stopwods, lemmatization, steming etc.
 
 ### Comparison method
 
