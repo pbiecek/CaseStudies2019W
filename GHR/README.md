@@ -47,27 +47,33 @@ The quality of our solution has been tested by comparing it to TasteDive, websit
 We conducted surveys, which can by found at the following address: [](https://goo.gl/forms/tHUYKyld723O0ptw1).
 Each participant had a task to assign to each of the 24 tv shows one of the 4 answers: show chosen by our algorithm, show chosen by TasteDive, "Both are equally similar" and "I can not tell".
 
+![](./imgs/survey_results.png)
+<!---
 Shows chosen by our algorithm have been selected 16 times, shows chosen by TasteDive have been selected 56 times, answer "Both are equally similar" has been chosen only 2 times and answer "I can not tell" has been chosen 71 times.
+-->
 We consider that one of pairs of series assigned to a given tv show won if it had more votes.
 Shows chosen by our algorithm won 6 times and shows chosen by TasteDive won 14 times.
 
 Assignment of similar series to "Death Note" and "Cowboy Bebop" gave interesting results.
+
+### Death Note
 "Death Note" is anime and crime show, our algorithm found the series the most similar to it to be "Sherlock", which is also crime show, but not animation.
 TasteDive chose "Code Geass" which is anime like "Death Note", but subject matter of series is completely different.
+
+### Cowboy Bebop
 Similar situation is with "Cowboy Bebop", it is anime, the action takes places in the future (space ships and interplanetary travels are important elements of plot).
 Our algorithm chose "Futurama" to be the most similar to it.
-It is cartoon, which takes places in future and spaceships and interplanetary travels are also important elements of plot.
-TasteDive chose "Samurai Champloo", which is anime, but it takes place in completely different time than "Cowboy Bebop".
+It is cartoon, which takes places in future and spaceships and interplanetary travels are also important elements of plot. TasteDive chose "Samurai Champloo", which is anime, but it takes place in completely different time than "Cowboy Bebop".
 
-In both cases most people chose shows proposed by TasteDive.
-It shows that our algorithm sometimes makes decisions, which are not obvious to people, because it is based only on words and there are other things, that are important to people watching tv shows.
-Such as style of animation or fact, that show is live action.
-
+<!---
 ## Related work 
 **TODO**
+-->
 
 ## Conclusion
-**TODO**: lesson learned
+In both cases described above most people chose shows proposed by TasteDive.
+It shows that our algorithm sometimes makes decisions, which are not obvious to people, because it is based only on words and there are other things, that are important to people watching tv shows.
+Such as style of animation or fact, that show is live action.
 
 
 
