@@ -17,7 +17,10 @@ python -m pip install --user virtualenv
 Download facenet:
 
 ```
+mkdir lib
+cd lib
 git clone https://github.com/davidsandberg/facenet.git
+cd ..
 ```
 
 Create virtual environment for the project:
