@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import ShowList from './ShowList';
-import {Box, Heading, Text} from 'grommet';
-import {Header} from 'grommet/es6/components/DataTable/Header';
+import {Box, Heading} from 'grommet';
 
 class Recommendations extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      recommendations: []
+      recommendations: [],
+      words: []
     };
   }
 
@@ -17,9 +17,10 @@ class Recommendations extends Component {
       .map(show => show.replace(/[^\w ]/g, '_'))
       .reduce((acc, show) => ([...acc, ...(this.props.recommendations[show] || [])]), [])
       .reduce((acc, rec) => ({...acc, [rec]: acc[rec] ? acc[rec] + 1 : 1}), {}))
-      .sort((a,b) => b[1] - a[1])
+      .sort((a, b) => b[1] - a[1])
       .map(([name]) => name);
-    this.setState({recommendations});
+    const words = recommendations.map((show) => this.props.words[show]);
+    this.setState({recommendations, words});
   }
 
   componentWillReceiveProps(nextProps) {
@@ -42,7 +43,7 @@ class Recommendations extends Component {
         }}>
           <Heading size="small" textAlign="center">Top suggestions for you</Heading>
         </Box>
-        <ShowList showList={this.state.recommendations}/>
+        <ShowList showList={this.state.recommendations} words={this.state.words}/>
       </Box>
     );
   }

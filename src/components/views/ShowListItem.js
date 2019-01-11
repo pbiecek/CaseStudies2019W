@@ -33,6 +33,7 @@ class ShowListItem extends Component {
             <Text color='light-5' size='small'>{this.state.data._year_data}</Text>
             <Text color='light-6' truncate>{this.state.data.actors}</Text>
             <Text color='light-6' truncate>{this.state.data.genres}</Text>
+            {this.props.words && <Text color='light-6' truncate>Clue words: {this.props.words}</Text>}
           </Box>
         ) : (
           <Box direction='column' align='center' justify='center'>
@@ -49,7 +50,7 @@ class ShowListItem extends Component {
   }
 }
 
-ShowListItem.propTypes = {name: PropTypes.string.isRequired, onRemove: PropTypes.func.isRequired};
-ShowListItem.defaultProps = {name: 'Breaking Bad'};
+ShowListItem.propTypes = {name: PropTypes.string.isRequired, onRemove: PropTypes.func.isRequired, words: PropTypes.array};
+ShowListItem.defaultProps = {words: undefined};
 
 export default ShowListItem;

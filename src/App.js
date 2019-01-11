@@ -42,22 +42,26 @@ class App extends Component {
       loading: true,
       shows: [],
       showList: [],
-      recommendations: {}
+      recommendations: {},
+      words: {}
     };
   }
 
   async componentDidMount() {
     const shows = await (await fetch('shows.txt')).text();
-    const recommendations = (await parseCsv((await (await fetch('show_sim_emb.csv')).text())))
-      .reduce((acc, {show1, show2}) => ({...acc,
+    const similarities = await parseCsv(await (await fetch('show_sim_emb.csv')).text());
+    const recommendations = similarities
+      .reduce((acc, {show1, show2}) => ({
+        ...acc,
         [show1]: (acc[show1] ? unique([...acc[show1], show2]) : [show2]),
         [show2]: (acc[show2] ? unique([...acc[show2], show1]) : [show1])
       }), {});
-
+    const words = similarities.reduce((acc, {show1, words}) => ({...acc, [show1]: words}), {});
     this.setState({
       loading: false,
       shows: shows.split('\n'),
-      recommendations
+      recommendations,
+      words
     });
   }
 
@@ -78,12 +82,14 @@ class App extends Component {
                 {(size !== 'small') ? (
                   <Box
                     flex
+                    height='100%'
                     fill='vertical'
                     width='medium'
                     elevation='small'
                     margin='medium'
                   >
-                    <Recommendations recommendations={this.state.recommendations} selectedShows={this.state.showList}/>
+                    <Recommendations recommendations={this.state.recommendations} selectedShows={this.state.showList}
+                                     words={this.state.words}/>
                   </Box>
                 ) : (this.state.showSidebar &&
                   <Layer>

@@ -23,9 +23,9 @@ class ShowList extends Component {
         }
         <FlipMove>
           {
-            this.props.showList.map(show => (
+            this.props.showList.map((show, ind) => (
               <Button fill plain key={show} hoverIndicator onClick={() => this.showModal(show)}>
-                <ShowListItem onRemove={this.props.onRemove} name={show}/>
+                <ShowListItem onRemove={this.props.onRemove} name={show} words={this.props.words[ind]}/>
               </Button>
             ))
           }
@@ -36,6 +36,6 @@ class ShowList extends Component {
 }
 
 ShowList.propTypes = {};
-ShowList.defaultProps = {};
+ShowList.defaultProps = {words: []};
 
 export default ShowList;
