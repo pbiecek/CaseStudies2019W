@@ -12,13 +12,17 @@ class Recommendations extends Component {
     };
   }
 
-  getRecommendations(nextProps) {
-    const recommendations = Object.entries(nextProps.selectedShows
-      .map(show => show.replace(/[^\w ]/g, '_'))
-      .reduce((acc, show) => ([...acc, ...(this.props.recommendations[show] || [])]), [])
-      .reduce((acc, rec) => ({...acc, [rec]: acc[rec] ? acc[rec] + 1 : 1}), {}))
-      .sort((a, b) => b[1] - a[1])
-      .map(([name]) => name);
+  makeParams(shows) {
+    return shows.map((show, ind) => `shows[${ind}]=${encodeURIComponent(show)}`).join('&');
+  }
+
+  async getRecommendations(nextProps) {
+    let recommendations = [];
+    if (nextProps.selectedShows.length > 0) {
+      const response = await (await fetch(
+        `https://series-backend.herokuapp.com/recommendations?${this.makeParams(nextProps.selectedShows)}`)).json();
+      recommendations = response.map(([a]) => a);
+    }
     const words = recommendations.map((show) => this.props.words[show]);
     this.setState({recommendations, words});
   }
@@ -43,7 +47,7 @@ class Recommendations extends Component {
         }}>
           <Heading size="small" textAlign="center">Top suggestions for you</Heading>
         </Box>
-        <ShowList showList={this.state.recommendations} words={this.state.words}/>
+        <ShowList showList={this.state.recommendations} words={this.state.words} notRemovable/>
       </Box>
     );
   }

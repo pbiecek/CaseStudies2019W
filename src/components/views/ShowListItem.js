@@ -20,12 +20,14 @@ class ShowListItem extends Component {
   render() {
     return (
       <Grid
-            rows={['auto']}
-            columns={['100px', 'auto', '50px']}
-            style={{width: '100%'}}
+        rows={['auto']}
+        columns={['100px', 'auto', '50px']}
+        style={{width: '100%'}}
       >
         <Box height="130px">
-          <Image src={(this.state.data && this.state.data.poster !== 'N/A' && this.state.data.poster) || posterPlaceholder} fit='contain'/>
+          <Image
+            src={(this.state.data && this.state.data.poster !== 'N/A' && this.state.data.poster) || posterPlaceholder}
+            fit='contain'/>
         </Box>
         {this.state.data ? (
           <Box direction='column' justify='center'>
@@ -40,17 +42,22 @@ class ShowListItem extends Component {
             <Text size='large'>{this.props.name}</Text>
           </Box>)}
         <Box direction='column' justify='center' margin={{left: 'small'}}>
-          <Button icon={<Close/>} onClick={(e) => {
+          {!this.props.notRemovable && <Button icon={<Close/>} onClick={(e) => {
             e.stopPropagation();
             this.props.onRemove(this.props.name);
           }}/>
+          }
         </Box>
       </Grid>
     );
   }
 }
 
-ShowListItem.propTypes = {name: PropTypes.string.isRequired, onRemove: PropTypes.func.isRequired, words: PropTypes.array};
+ShowListItem.propTypes = {
+  name: PropTypes.string.isRequired,
+  onRemove: PropTypes.func.isRequired,
+  words: PropTypes.array
+};
 ShowListItem.defaultProps = {words: undefined};
 
 export default ShowListItem;

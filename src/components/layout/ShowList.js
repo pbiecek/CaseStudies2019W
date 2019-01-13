@@ -25,7 +25,7 @@ class ShowList extends Component {
           {
             this.props.showList.map((show, ind) => (
               <Button fill plain key={show} hoverIndicator onClick={() => this.showModal(show)}>
-                <ShowListItem onRemove={this.props.onRemove} name={show} words={this.props.words[ind]}/>
+                <ShowListItem onRemove={this.props.onRemove} name={show} words={this.props.words[ind]} notRemovable={this.props.notRemovable}/>
               </Button>
             ))
           }
