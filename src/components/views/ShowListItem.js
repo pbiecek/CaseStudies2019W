@@ -44,6 +44,7 @@ class ShowListItem extends Component {
         <Box direction='column' justify='center' margin={{left: 'small'}}>
           {!this.props.notRemovable && <Button icon={<Close/>} onClick={(e) => {
             e.stopPropagation();
+            e.preventDefault();
             this.props.onRemove(this.props.name);
           }}/>
           }
@@ -55,8 +56,8 @@ class ShowListItem extends Component {
 
 ShowListItem.propTypes = {
   name: PropTypes.string.isRequired,
-  onRemove: PropTypes.func.isRequired,
-  words: PropTypes.array
+  onRemove: PropTypes.func,
+  words: PropTypes.any
 };
 ShowListItem.defaultProps = {words: undefined};
 

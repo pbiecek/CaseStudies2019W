@@ -58,3 +58,8 @@
     height: calc(100vh - 60px);
     overflow-y: scroll;
 }
+
+.show-btn:hover {
+    background: rgba(221,221,221,0.4);
+    cursor: pointer;
+}

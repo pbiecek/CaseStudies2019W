@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import ShowListItem from '../views/ShowListItem';
-import {Button} from 'grommet';
+import {Box} from 'grommet';
 import FlipMove from 'react-flip-move';
 import ShowInfoModal from '../modals/ShowInfoModal';
 
@@ -24,9 +24,10 @@ class ShowList extends Component {
         <FlipMove>
           {
             this.props.showList.map((show, ind) => (
-              <Button fill plain key={show} hoverIndicator onClick={() => this.showModal(show)}>
-                <ShowListItem onRemove={this.props.onRemove} name={show} words={this.props.words[ind]} notRemovable={this.props.notRemovable}/>
-              </Button>
+              <Box fill plain key={show} hoverIndicator onClick={() => this.showModal(show)} className="show-btn">
+                <ShowListItem onRemove={this.props.onRemove} name={show} words={this.props.words[ind]}
+                              notRemovable={this.props.notRemovable}/>
+              </Box>
             ))
           }
         </FlipMove>
