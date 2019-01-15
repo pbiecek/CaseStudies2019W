@@ -9,7 +9,7 @@
 * Facenet demo https://github.com/pbiecek/WarsztatyBadawcze2018/tree/master/PAW
 
 
-Previous semester (PAD summer 2017/2018): https://github.com/pbiecek/SystemAnalizyDanych
+Previous semester (PAD summer 2017/2018): https://github.com/pbiecek/CaseStudies2018S
 
 
 --------
