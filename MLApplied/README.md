@@ -3,6 +3,7 @@
 
   - https://github.com/damian9550/age-recognition-be
   - https://github.com/piotrek29100/age-recognition-client
+  - https://github.com/piotrek29100/age-recognition
 
 The goal of the project was to recognize faces from video camera input and show predicted age. Prediction is based on trained neural network. 
 Our method shows similar results as another method on the same dataset.
@@ -53,6 +54,7 @@ Web page then is available under http://localhost:4200
  
 ## 3. Neural network architecture and training
 Age is predicted by a deep neural network. We have tested two approaches presented below.
+https://github.com/piotrek29100/age-recognition
 ### Training from scratch
 Modeling a custom network is often time-consuming task. During such a process, it is necessary to check repeatedly what accuracy the current model achieves. Therefore we have used VGG_Face architecture to test how promising is training from scratch. Unfortunately, results and learning speed were unacceptable so this aproach has been abandoned on the first stages of the project.
 ### Transfer learning approach
