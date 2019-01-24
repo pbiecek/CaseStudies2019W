@@ -17,7 +17,7 @@ Our method shows similar results as another method on the same dataset.
 How to use application?
 1. Open the site https://agerecognition.mini.pw.edu.pl
 2. Allow to use camera when asked.
-3. Screenshot of application:
+![Screenshot of application](./app_screenshot.png)
 
 When face is recognized, frame appears with predicted age inside it. If there is no frame try to move closer to camera.
 
@@ -67,3 +67,4 @@ Stages:
 * frozen 197 layers (all except four last blocks) >> no improvement
 
 ## 4. Results
+![Errors](./error.png)
