@@ -1,6 +1,9 @@
 # Age recognition
 *Authors* : Daria Hubernatorova, Piotr Wawrzyniak, Damian Gutowski
 
+  - https://github.com/damian9550/age-recognition-be
+  - https://github.com/piotrek29100/age-recognition-client
+
 The goal of the project was to recognize faces from video camera input and show predicted age. Prediction is based on trained neural network. 
 Our method shows similar results as another method on the same dataset.
 
