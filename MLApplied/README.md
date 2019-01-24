@@ -67,4 +67,6 @@ Stages:
 * frozen 197 layers (all except four last blocks) >> no improvement
 
 ## 4. Results
+The final results on test dataset are similar to compared approach https://data.vision.ee.ethz.ch/cvl/rrothe/imdb-wiki/ .
+As a discussion of obtained results: meanwhile face recognition algorithm has its error, which might have been transferred to error in final prediction. Also dataset of images used for training contained 230000 images. In this data, several persons had more than one image, which gives less diversified data for our network.
 ![Errors](./error.png)
