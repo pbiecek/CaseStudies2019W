@@ -2,6 +2,8 @@
 
 *Authors*: [Ivan Rukhavets](https://github.com/vanruch), [Kamil Grabowski](https://github.com/Kamig95), [Piotr Halama](https://github.com/ptrhlm)
 
+**This project was created during [Case Studies, W19](https://github.com/pbiecek/CaseStudies2019W) course at [MiNI PW](https://ww4.mini.pw.edu.pl/)**
+
 The goal of the project was to generate recommendations for TV shows, based on the subtitles from first few episodes and develop application for presenting these recommendations.
 Our method is based on cosine similarity between TV show embeddings.
 
