@@ -15,7 +15,7 @@ Our method shows similar results as another method on the same dataset.
   - [2. Technologies used](#2-technologies-used)
   - [3. Neural network architecture and training](#3-neural-network-architecture-and-training)
     - [3.1. Architecture](#31-architecture)
-  - [4. Results](#4-results)
+  - [4. Exeriment](#4-experiment)
 
 ## 1. Application
 How to use application?
@@ -71,8 +71,15 @@ Stages:
 * frozen 229 layers (all except three last blocks)
 * frozen 197 layers (all except four last blocks) >> no improvement
 
-## 4. Results
-The final results on test dataset are similar to compared approach https://data.vision.ee.ethz.ch/cvl/rrothe/imdb-wiki/ .
+## 4. Experiment
+### What we wanted to check?
+After building the above architecture of neural network, our aim was to check how good are the predictions and is the built solution stable. 
+
+### Predictions accuracy
+We used images from the same dataset, not seen by network, as test dataset. The final results on test dataset are similar to compared approach https://data.vision.ee.ethz.ch/cvl/rrothe/imdb-wiki/ .
 As a discussion of obtained results: meanwhile face recognition algorithm has its error, which might have been transferred to error in final prediction. Also dataset of images used for training contained 230000 images. In this data, several persons had more than one image, which gives less diversified data for our network.
 ![Mean errors](./meanError2_1.png)
 ![Errors](./error.png)
+ ### Stability issues
+ We checked our solution by asking people to use our application. Predictions were not stable while the same person was looking into camera. Reasons for this could be: poor image quality and not steady image predictions. Predictions are made every 2 seconds, but during this interval person is moving and transferred image to network can be distorted. Images used for training are steady and have better quality in comparison with live predictions.
+ We noticed that quality depends on conditions of surroundings (e.g. light) and how close person is to camera. More closer face image gives more accurate results.
