@@ -4,8 +4,8 @@
 
 **This project was created during [Case Studies, W19](https://github.com/pbiecek/CaseStudies2019W) course at [MiNI PW](https://ww4.mini.pw.edu.pl/)**
 
-The goal of the project was to generate recommendations for TV shows, based on the subtitles from first few episodes and develop application for presenting these recommendations.
-Our method is based on cosine similarity between TV show embeddings.
+The goal of the project was to evaluate a novel method of creating recommendations for TV shows, based on the subtitles from first few episodes and develop application for presenting these recommendations.
+Our method is based on cosine similarity between TV show embeddings, which is then used to rank and select best fitting recommendations.
 
 While the embeddings capture a similarity of some kind, our survey showed it was not of the kind that people would use to find next show to watch.
 
@@ -73,7 +73,7 @@ Lastly, we perform removal of metadata (i.e. indexes or timestamps) from the `.s
 
 The resulting corpus of TV series subtitles can be found [here](https://drive.google.com/open?id=1EydDpkS8LuP_vjp7g1A6hEa08ezL7Jf7).
 
-### 3.2. Comparison method
+### 3.2. Ranking method
 For each TV show in our dataset we compute an embedding by calculating the mean of the word embeddings of the most common 100 nouns found in subtitles of the first few episodes.
 
 <p align="center">
@@ -97,6 +97,10 @@ The similarity of a pair of TV shows is defined as cosine similarity of their em
 <!--
 \[\text{similarity}(\vec{s_i}, \vec{s_j}) = \frac{\sum\limits_{k=1}^{n} s_{ik}s_{jk}}{\sqrt{\sum\limits_{k=1}^{n} s_{ik}^2}\sqrt{\sum\limits_{k=1}^{n}s_{jk}^2}}\]
 -->
+
+For every TV series in our database, we compute its similarity with every other TV series we have. 
+We use the calculated similarities to rank them (sorting order is descending; from 1 to -1).
+Finally, we select top 3 results as our recommendation.
 
 ## 4. Survey
 
