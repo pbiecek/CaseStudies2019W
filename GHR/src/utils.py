@@ -23,6 +23,7 @@ def mean_vectors(vectors: List[List[float]]) -> List[float]:
     return sum_vector
 
 
+# load embeddings for words
 def change_to_emb(words: List[str], emb_dict: Dict) -> List[List[float]]:
     embs = []
     for word in words:
@@ -68,6 +69,7 @@ def create_bag_of_words(doc_words: List[Tuple[str, int]], all_words: List[str]) 
     return bag_of_words
 
 
+# finding nearest embedding by cosine similarity
 def nearest_cos(vector: List, all_vectors: List[Tuple[str,List]], target_name: str) -> str:
     max = 0
     max_str = ""
@@ -80,7 +82,8 @@ def nearest_cos(vector: List, all_vectors: List[Tuple[str,List]], target_name: s
     return max_str
 
 
-def nearest_coef(vector: List[int], all_vectors: List[Tuple[str,List[int]]], target_name: str) -> str:
+# finding nearest embedding by correlation
+def nearest_corr(vector: List[int], all_vectors: List[Tuple[str,List[int]]], target_name: str) -> str:
     max = 0
     max_str = ""
     for name, vec in all_vectors:
