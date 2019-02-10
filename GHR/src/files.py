@@ -92,8 +92,8 @@ def load_data(fname, vocab, max_len):
     return encoded_docs
 
 
+# create vector from line in fasttext
 def vector(line):
-    """ Line is in the format output by print-sentence-vector """
     v = line.split()[-300:]
     return list(map(float, v))
 
