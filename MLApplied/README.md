@@ -78,7 +78,9 @@ After building the above architecture of neural network, our aim was to check ho
 ### Predictions accuracy
 We used images from the same dataset, not seen by network, as test dataset. The final results on test dataset are similar to compared approach https://data.vision.ee.ethz.ch/cvl/rrothe/imdb-wiki/ .
 As a discussion of obtained results: meanwhile face recognition algorithm has its error, which might have been transferred to error in final prediction. Also dataset of images used for training contained 230000 images. In this data, several persons had more than one image, which gives less diversified data for our network.
+Graph below represents mean error on test dataset for each year of person between 10 and 80 years. From the graph we conclude that results from neural network can be improved by additional predictors. The curve obtained shows small errors for people between 30 and 60 years, and big errors for children and older people. This is in accordance to distribution of images in dataset.
 ![Mean errors](./meanError2_1.png)
+How error changed with number of epochs:
 ![Errors](./error.png)
  ### Stability issues
  We checked our solution by asking people to use our application. Predictions were not stable while the same person was looking into camera. Reasons for this could be: poor image quality and not steady image predictions. Predictions are made every 2 seconds, but during this interval person is moving and transferred image to network can be distorted. Images used for training are steady and have better quality in comparison with live predictions.
