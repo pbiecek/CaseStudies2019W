@@ -80,6 +80,8 @@ We used images from the same dataset, not seen by network, as test dataset. The 
 As a discussion of obtained results: meanwhile face recognition algorithm has its error, which might have been transferred to error in final prediction. Also dataset of images used for training contained 230000 images. In this data, several persons had more than one image, which gives less diversified data for our network.
 Graph below represents mean error on test dataset for each year of person between 10 and 80 years. From the graph we conclude that results from neural network can be improved by additional predictors. The curve obtained shows small errors for people between 30 and 60 years, and big errors for children and older people. This is in accordance to distribution of images in dataset.
 ![Mean errors](./meanError2_1.png)
+Distribution of age in dataset:
+![Distribution](./dataset_dist.png)
 How error changed with number of epochs:
 ![Errors](./error.png)
  ### Stability issues
