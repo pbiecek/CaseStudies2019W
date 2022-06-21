@@ -6,7 +6,7 @@ idna==2.7
 IMDbPY==6.6
 kinopoiskpy==0.8.0
 lxml==4.2.5
-numpy==1.15.2
+numpy==1.22.0
 pandas==0.23.4
 python-dateutil==2.7.3
 python-opensubtitles==0.2.dev0
